@@ -9,7 +9,7 @@
 
 클라이언트와 서버는 http라는 일정한 규칙으로 서로 소통
 
-## <br>URL > Uniform Resource Locator
+## <br>URL(Uniform Resource Locator)
 ### URL 해체 분석기 <img src = "https://opgg-com-image.akamaized.net/attach/images/20200301074052.853300.jpg" width = "80" height = "80">
 
 https://www.google.com/search?q=techit 를 예로 들어 본다면,
