@@ -89,3 +89,76 @@ __인터넷 = 네트워크와 네트워크가 연결된 거대 통신망__
 
 ## DNS(Domain Name Server) 
 - URL을 해석하여 IP 주소로 변환하는 서버
+
+# TECHIT 2주차 강의 기록 <br>Django 구조 및 작동원리 & Django CRUD API 구현
+
+## <br>1. DRF(Django REST Framework)란?
+Django REST Framework는 장고 안에서 RESTful 한 API 서버를 쉽게 구축할 수 있도록 도와주는 오픈소스 라이브러리를 의미
+
+API, REST API, RESTful의 정의
+
+- API 
+  - 응용프로그램 데이터를 주고받는 규약
+
+- REST API 
+  - Json 형태로 CRUD 데이터를 주고받는 규약
+
+- RESTful
+  - REST 방식을 따라서 개발하는 것
+
+여기서 REST 방식이라고 한다면 자원과 이 자원에 대한 행위를 나눠서 작성하는 것을 말하며, 
+<br>간단한 예제로는 유저에 대한 것을 예를 들면
+
+
+GET /user      : 유저의 정보들을 가져옴
+
+GET /user/1    : 1번 유저의 정보를 가져옴
+
+PUT /user/1    : 1번 유저의 정보를 수정함
+
+POST /user/1   : 1번 유저를 만듦
+
+DELETE /user/1 : 1번 유저를 삭제함
+
+ 
+
+등의 방식으로 표현 가능
+
+### DRF의 큰 기능
+- Models를 serializers로 변환하는 것
+- 직렬화(serializer)를 하여서 메모리에 존재하고 추상적인 Object를 String or bytes로 만들어 드라이브에 저장 및 통신선 전송도 가능
+
+### 직렬화(serializer)
+모든 프로그래밍 언어의 통신에서 데이터는 필히 문자열로 표현되어야 함.
+
+송신자 : 객체를 문자열로 변환하여 전송 -> 직렬화
+<br>수신자 : 수신한 문자열을 다시 객체로 변환하여, 활용 -> 비직렬화
+
+
+#### 장고와 DRF 차이
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbpZ59y%2FbtrBiZDTTlc%2Frn7ptKukKWWKzs8SC4Kic0%2Fimg.png">
+
+
+#### 직렬화와 역직렬화 도식도
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZjzkn%2FbtrBi79K9ol%2FTU0Q7L1xFYVwY9oXkHH010%2Fimg.png">
+
+DRF는 데이터 전송 중간에 직렬화를 시켜줌. 
+>간단하게 한 줄로 된 긴 문자열로 만들어준다고 생각하면 되겠습니다. 
+이것을 이용해서 데이터를 보내게 되며 받는 곳에서는 이 데이터 스트링과 그 데이터의 포맷 정보를 받아서 역직렬화 하여 Object로 다시 변경하여 사용하게 되는 것입니다.
+
+### CORS(Cross-Origin Resource Sharing)
+- 다른 출처의 자원을 공유. 교차 출처 리소스 공유 (Cross-origin Resource Sharing, Cors)는 추가 HTTP헤더를 사용하여, 한 출처에서 실행 중인 웹 애플리케이션이 다른 출처의 선택한 자원에 접근할 수 있는 권한을부여하도록 브라우저에 알려주는 체제
+#### 왜 필요한가?
+- CORS가 없이 모든 곳에서 데이터를 요청할 수 있게 된다면, 다른 사이트에서 원래 사이트를 흉내낼 수 있게 된다. 만약 기존 사이트와 완전히 동일하게 동작하도록 하여 사용
+자가 로그인을 하도록 하고, 로그인했던 세션 또는 토큰을 탈취하여 악의적으로 정보를 꺼내오거나 다른 사용자의 정보를 입력하는 등 해킹을 할 수 있기에 보안상의 이유로 사용되고 있다.
+
+### CRUD
+-  CRUD는 대부분의 컴퓨터 소프트웨어가 가지는 기본적인 데이터 처리 기능인 Create(생성), Read(읽기), Update(갱신), Delete(삭제)를 묶어서 일컫는 말
+
+##### 데이터베이스 SQL문과 대응
+| 이름 | 조작 | SQL |
+|---|---|---|
+| Create | 생성 | INSERT |
+| Read(또는 Retrieve) | 읽기(또는 인출) | SELECT |
+| Update | 갱신 | UPDATE |
+| Delete(또는 Destroy) | 삭제(또는 파괴) | DELETE |
