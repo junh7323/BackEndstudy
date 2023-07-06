@@ -303,3 +303,52 @@ MTV 디자인 패턴
   - 데이터베이스에 저장할 테이블 정의
   - 모델에 작성된 코드를 기준으로 데이터베이스 생성(ORM)
   - 데이터베이스와 연결 및 실행
+
+# TECHIT 4주차 강의 기록 <br>Chapter 3. QuerySet API와 Admin 개발하기
+
+## QuerySet API
+- Query: DB에 정보를 요청하는 것
+- QuerySet: DB에서 전달 받은 객체의 목록
+- QuerySet API: DB에 요청하기 위한 인터페이스
+
+### Queryset API 주요 함수
+- 새 QuerySet을 반환하는 메서드
+	- filter()
+	- exclude()
+	- order_by()
+	- select_related()
+	- prefetch_related()
+	- raw()
+
+- Querysets를 반환하지 않는 메서드
+  - get()
+  - create()
+  - count()
+  - first()
+  - last()
+
+    
+## Django shell
+- 파이썬 인터프리터 형식으로 장고 사용
+- Model을 import하여 사용 가능
+- python manage.py shell
+
+## Database Tool
+- 데이터베이스의 관리를 위한 도구
+- 툴을 활용하여 테이블이나 데이터를 조작
+- GUI(Graphical User Interface) 제공
+
+## Django는 기본적으로 관리자(admin) 인터페이스를 제공
+
+settings.py 하단의 language code를 ko-kr로 수정하여 한글 설정이 가능
+
+python mange.py createsuperuer - 어드민 계정 생성
+python manage.py runserver - 서버 실행
+
+http://127.0.0.1:8000/admin 을 통해 관리자 로그인 페이지로 이동 후 어드민 계정으로 로그인
+
+posts - admin.py의 경로로 이동
+
+from .models import, Comment > 관리자 페이지에 모델 등록 (Post, Comment를 import)
+admin.site.register(Post)
+admin.site.register(Comment)
