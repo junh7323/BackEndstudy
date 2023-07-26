@@ -304,7 +304,7 @@ MTV 디자인 패턴
   - 모델에 작성된 코드를 기준으로 데이터베이스 생성(ORM)
   - 데이터베이스와 연결 및 실행
 
-# TECHIT 4주차 강의 기록 <br>Chapter 3. QuerySet API와 Admin 개발하기
+# TECHIT 5주차 강의 기록 <br>Chapter 3. QuerySet API와 Admin 개발하기
 
 ## QuerySet API
 - Query: DB에 정보를 요청하는 것
@@ -352,3 +352,52 @@ posts - admin.py의 경로로 이동
 from .models import, Comment > 관리자 페이지에 모델 등록 (Post, Comment를 import)
 admin.site.register(Post)
 admin.site.register(Comment)
+
+
+# TECHIT 6주차 강의 기록 <br>Chapter 4. Template과 View 정복하기
+
+## Views를 만드는 방법
+### FBV(Function Based Views): 함수 기반 뷰 
+- 장점
+  - 구현이 간편함
+  - 읽기 쉬우며 직관적인 코드
+  - 데코레이터의 간단한 사용법
+- 단점
+  - 코드 확장과 재사용이 어려움
+  - 조건부 분기를 통한 HTTP 메서드 처리
+    
+>일회성, 특수 목적이 있는 View에 적합
+
+### CBV(Class Based Views): 클래스 기반 뷰
+- 장점
+  - 코드 확장과 재사용 용
+  - 다중 상속, Mixin 가
+  - 내장 Classe Based View 사용(ListView, CreateView, DetailView...)
+- 단점
+  - 읽기 어려우며 복잡도가 높
+  - 데코레이터 사용 시 함수를 재정의 해야함
+ 
+>일반적인 생성, 조회, 수정, 삭제 등의 View에 적합
+
+## Template는 서버에서 실행함
+- Template 태그
+  - block : 자식 템플릿으로 재정의할 수 있는 블록 > {%block name%}{%endblock%}
+  - extends : 부모 템플릿을 확장, 상속 >
+  - include : 템플릿을 로드하고 현재 Context로 렌더링, 템플릿 포함 >
+  - for : Context 변수의 배열의 항목을 반복 사용 *for, empty >
+  - if : 조건이 true이면 출력하고 false인 경우 미출력 *if, else, elif >
+  - url : 보기 및 선택적 매개변수와 일치하는 절대 경로 참조(도메인 이름이 없는 URL)를 반환
+    
+- Template 태그
+  - 부모 HTML을 자식 HTML이 상속받음
+    
+- Template 필터
+  - date : 주어진 형식에 따라 날짜 형식을 지정 >>> {{value|date:"D d M Y"}}
+  - default : 값이 없을 때, 지정된 기본값을 사용, 값이 있을 경우, 값을 출력함 >>> {{value|default:"nothing"}}
+  - center : 주어진 너비의 필드에서 값을 가운데에 맞춤 >>> {{value|center:"15"}}
+  - truncatechars : 지정된 문자 수보다 긴 경우 문자열을 자름. 자른 문자열은 번역 가능한 줄임표 문자("...")로 끝남 >>> {{value|truncatechars:7}}
+  - intcomma : 정수 또는 부동 소수점(또는 둘 중 하나의 문자열 표현)을 세 자리마다 쉼표가 포함된 문자열로 변환 >>> {%load humanize%} or {{{{value|intcomma}}
+
+  
+# TECHIT 7주차 강의 기록 <br>Chapter 5. 백엔드의 필수: CRUD 개발하기
+
